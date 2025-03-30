@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import * as React from "react"
@@ -8,12 +9,12 @@ import {
     NavigationMenu,
     NavigationMenuContent,
     NavigationMenuItem,
-    NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import Image from "next/image"
+import { FaBell } from "react-icons/fa"
+import Search from "./Search"
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -60,20 +61,24 @@ const notifications = [
 
 export function NavigationMenuDemo() {
     return (
-        <NavigationMenu className="bg-red-400 w-screen py-2 px-4 ">
-
+        <NavigationMenu>
             <NavigationMenuList>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>Notification</NavigationMenuTrigger>
-                    <NavigationMenuContent
-                        className="absolute">
-                        <div className="flex flex-col md:w-[400px] lg:w-[500px] max-w-[1000px] overflow-auto">
+                <NavigationMenuItem className="pl-5">
+                    <NavigationMenuTrigger>
+                        <div className="flex items-center h-full relative">
+                            <FaBell className="text-xl" />
+                            <div className="absolute font-medium -top-1.5 right-0 z-20 text-red-600 text-[14px]">
+                                2
+                            </div>
+                        </div>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="px-1 py-1">
+                        <div className="flex flex-col w-[180px] overflow-auto">
                             {
                                 notifications.map((ele, i) => (
-                                    <div key={i} className="flex items-center gap-2 py-3 px-2 border-b-2">
+                                    <div key={i} className="cursor-pointer hover:bg-slate-100/90 flex items-center gap-2 py-3 px-2 border-b-2">
                                         <Image src='/profile-demo-1.jpg' alt="profile pic" height={30} width={30} className="rounded-full" />
-                                        <div>{ele.username}</div>
-                                        <div className="flex-grow">{ele.description}</div>
+                                        <div className="flex-grow text-xs">{ele.description}</div>
                                     </div>
                                 ))
                             }
@@ -87,10 +92,10 @@ export function NavigationMenuDemo() {
                             <div>Jyoti</div>
                         </div>
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                        <ul className="flex flex-col w-[260px] gap-3 p-1">
-                            <Link href={"/profile"}>Profile</Link>
-                            <Link href={"/docs/primitives"}>Primitives</Link>
+                    <NavigationMenuContent className="">
+                        <ul className="flex flex-col w-[170px] p-1 gap-3 text-sm">
+                            <Link className="" href={"/profile"}>Profile</Link>
+                            <Link className="pb-2 border-b-2" href={"/docs/primitives"}>Primitives</Link>
                             <button className="bg-red-400 hover:bg-red-500 rounded-lg py-2 px-3 w-full">
                                 Sign Out
                             </button>
@@ -102,40 +107,15 @@ export function NavigationMenuDemo() {
     )
 }
 
-const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-    return (
-        <li>
-            <NavigationMenuLink asChild>
-                <a
-                    ref={ref}
-                    className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                        className
-                    )}
-                    {...props}
-                >
-                    <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        {children}
-                    </p>
-                </a>
-            </NavigationMenuLink>
-        </li>
-    )
-})
-ListItem.displayName = "ListItem"
-
 
 
 const Navbar = () => {
     return (
-        <div className="flex bg-red-200">
+        <div className="flex items-center py-2 px-4 relative">
             <div className="">
                 Feedbacks For Me
             </div>
+            <Search />
             <div className="ml-auto">
                 <NavigationMenuDemo />
             </div>
