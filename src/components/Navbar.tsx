@@ -73,7 +73,7 @@ export function NavigationMenuDemo() {
                         </div>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="px-1 py-1">
-                        <div className="flex flex-col w-[180px] overflow-auto">
+                        <div className="flex flex-col w-[205px] overflow-auto">
                             {
                                 notifications.map((ele, i) => (
                                     <div key={i} className="cursor-pointer hover:bg-slate-100/90 flex items-center gap-2 py-3 px-2 border-b-2">
@@ -88,12 +88,19 @@ export function NavigationMenuDemo() {
                 <NavigationMenuItem>
                     <NavigationMenuTrigger>
                         <div className="flex gap-2 items-center">
-                            <Image src='/profile-demo-1.jpg' alt="profile pic" height={30} width={30} className="rounded-full" />
-                            <div>Jyoti</div>
+                            <Image
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Profile"
+                                className="h-8 w-8 rounded-full"
+                                height={32}
+                                width={32}
+                            />
+                            <span className="font-medium">Mr. Jake</span>
+
                         </div>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="">
-                        <ul className="flex flex-col w-[170px] p-1 gap-3 text-sm">
+                        <ul className="flex flex-col w-[195px] p-1 gap-3 text-sm">
                             <Link className="" href={"/profile"}>Profile</Link>
                             <Link className="pb-2 border-b-2" href={"/docs/primitives"}>Primitives</Link>
                             <button className="bg-red-400 hover:bg-red-500 rounded-lg py-2 px-3 w-full">
@@ -111,13 +118,15 @@ export function NavigationMenuDemo() {
 
 const Navbar = () => {
     return (
-        <div className="flex items-center py-2 px-4 relative">
-            <div className="">
-                Feedbacks For Me
-            </div>
-            <Search />
-            <div className="ml-auto">
-                <NavigationMenuDemo />
+        <div className="bg-white">
+            <div className="max-w-7xl mx-auto flex items-center py-2 px-4 relative">
+                <div className="">
+                    Feedbacks For Me
+                </div>
+                <Search />
+                <div className="ml-auto">
+                    <NavigationMenuDemo />
+                </div>
             </div>
         </div>
     )

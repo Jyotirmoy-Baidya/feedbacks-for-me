@@ -13,6 +13,8 @@
 
 /* ---break---  */
 :root {
+  --custom-gray: #E6E6E6;
+  --primary-bg: #ffffff;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -49,6 +51,8 @@
 
 /* ---break---  */
 .dark {
+  --custom-gray: #E6E6E6;
+  --primary-bg: #ffffff;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -84,6 +88,8 @@
 
 /* ---break---  */
 @theme inline {
+  --color-custom-gray: var(--custom-gray);
+  --color-primary-bg: var(--primary-bg);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
